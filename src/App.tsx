@@ -17,6 +17,14 @@ export default function App() {
             <PlusCircle size={20} />
           </button>
         </form>
+        <div className={styles.taskInfo}>
+          <div className={styles.taskCount}>
+            <p>Tarefas criadas</p> <span>20</span>
+          </div>
+          <div className={styles.taskDone}>
+            <p>Concluídas</p> <span>10 de 20</span>
+          </div>
+        </div>
       </div>
     </main>
   )
