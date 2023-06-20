@@ -5,7 +5,48 @@
   padding: 4.5rem 0 5rem;
 }
 
-.header img{
+.header img {
   height: 3rem;
 }
 
+.wrapper {
+  max-width: 46rem;
+  margin: auto;
+}
+
+.newTask {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: calc(0px - 1.5rem);
+}
+
+.newTask textarea {
+  background: var(--gray-500);
+  color: var(--gray-100);
+  width: 638px;
+  height: 3.3375rem;
+  padding: 1rem;
+  border: 0;
+  resize: none;
+  border-radius: 8px;
+}
+
+.newTask button {
+  background: var(--blue-dark);
+  border: 0;
+  border-radius: 8px;
+  padding: 0 1rem;
+  color: var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.newTask button:hover {
+  background: var(--blue);
+  transition: background-color 0.2s;
+}
