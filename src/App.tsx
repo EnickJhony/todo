@@ -1,3 +1,5 @@
+import { EmptyCard } from './components/EmptyCard'
+
 import LogoTodo from './assets/logo.svg'
 import { PlusCircle } from 'phosphor-react'
 import styles from './App.module.css'
@@ -25,6 +27,7 @@ export default function App() {
             <p>Concluídas</p> <span>10 de 20</span>
           </div>
         </div>
+        <EmptyCard />
       </div>
     </main>
   )
