@@ -1,8 +1,9 @@
 import { Circle, Trash } from 'phosphor-react'
 import styles from './Card.module.css'
 import { useState } from 'react'
+// import { Task } from '../App'
 
-export function Card() {
+export function Card(props:Task) {
   const [isHovered, setIsHovered] = useState(false)
 
   const handleMouseEnter = () => {
@@ -24,10 +25,8 @@ export function Card() {
         <Circle size={20} weight={isHovered ? 'duotone' : 'regular'} />
       </a>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam dicta ad
-        sequi repudiandae cumque nostrum atque sit placeat, accusamus ex
-        mollitia delectus impedit ullam, optio saepe quam numquam consequuntur
-        suscipit!
+        {props.content}
+        {/* {props.content} */}
       </p>
       <a href="#" className={styles.trash}>
         <Trash size={20} />
