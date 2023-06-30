@@ -1,47 +1,51 @@
+import { useState } from 'react'
+import { v4 as uuid } from 'uuid'
 import { Card } from './components/Card'
 import { EmptyCard } from './components/EmptyCard'
-
 import LogoTodo from './assets/logo.svg'
 import { PlusCircle } from 'phosphor-react'
-// import { v4 as uuid } from 'uuid'
 
 import styles from './App.module.css'
 import './global.css'
-import { useState } from 'react'
 
-// export interface Task {
-//   id: string
-//   content: string
-//   isCompleted: boolean
-// }
+export interface Task {
+  id: string
+  content: string
+  isCompleted: boolean
+}
 
-// const tasks: Task[] = [
-//   {
-//     id: uuid(),
-//     content: 'Terminar o desafio!',
-//     isCompleted: false
-//   },
-//   {
-//     id: uuid(),
-//     content: 'Nova tarefa!',
-//     isCompleted: false
-//   }
-// ]
+const tasks: Task[] = [
+  {
+    id: uuid(),
+    content: 'Estudar React',
+    isCompleted: false
+  }
+]
 
 export default function App() {
-  const [taskTest, setTaskTest] = useState([])
+  const [task, setTask] = useState(tasks)
 
   const [newTaskText, setNewTaskText] = useState('')
 
   function handleCreateNewTask() {
     event?.preventDefault()
-    setTaskTest([...taskTest, newTaskText])
+
+    setTask([
+      ...task,
+      {
+        id: uuid(),
+        content: newTaskText,
+        isCompleted: false
+      }
+    ])
+
     setNewTaskText('')
   }
 
   function newTaskChange() {
     setNewTaskText(event.target.value)
   }
+
   return (
     <main>
       <header className={styles.header}>
@@ -62,30 +66,26 @@ export default function App() {
         </form>
         <div className={styles.taskInfo}>
           <div className={styles.taskCount}>
-            <p>Tarefas criadas</p> <span>{taskTest.length}</span>
+            <p>Tarefas criadas</p> <span>{task.length}</span>
           </div>
           <div className={styles.taskDone}>
-            <p>Concluídas</p> <span>10 de {taskTest.length}</span>
+            <p>Concluídas</p> <span>10 de {task.length}</span>
           </div>
         </div>
 
-        {taskTest.length <= 0 ? (
+        {tasks.length <= 0 ? (
           <EmptyCard />
         ) : (
-          taskTest.map(taskt => {
-            return <Card key={taskt} content={taskt} />
+          task.map(task => {
+            return (
+              <Card
+                key={task.id}
+                id={task.id}
+                content={task.content}
+                isCompleted={task.isCompleted}
+              />
+            )
           })
-
-          // tasks.map(task => {
-          //   return (
-          //     <Card
-          //       key={task.id}
-          //       id={task.id}
-          //       content={task.content}
-          //       isCompleted={task.isCompleted}
-          //     />
-          //   )
-          // })
         )}
       </div>
     </main>
