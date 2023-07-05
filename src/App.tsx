@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import { Card } from './components/Card'
 import { EmptyCard } from './components/EmptyCard'
@@ -14,21 +14,13 @@ export interface Task {
   isCompleted: boolean
 }
 
-const tasks: Task[] = [
-  {
-    id: uuid(),
-    content: 'Estudar React',
-    isCompleted: false
-  }
-]
-
 export default function App() {
-  const [task, setTask] = useState(tasks)
+  const [task, setTask] = useState<Task[]>([])
 
   const [newTaskText, setNewTaskText] = useState('')
 
-  function handleCreateNewTask() {
-    event?.preventDefault()
+  function handleCreateNewTask(event: FormEvent) {
+    event.preventDefault()
 
     setTask([
       ...task,
@@ -42,7 +34,7 @@ export default function App() {
     setNewTaskText('')
   }
 
-  function newTaskChange() {
+  function newTaskTextChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setNewTaskText(event.target.value)
   }
 
@@ -57,7 +49,7 @@ export default function App() {
             name="task"
             placeholder="Adicione uma nova tarefa"
             value={newTaskText}
-            onChange={newTaskChange}
+            onChange={newTaskTextChange}
           />
           <button type="submit">
             Criar
@@ -73,7 +65,7 @@ export default function App() {
           </div>
         </div>
 
-        {tasks.length <= 0 ? (
+        {task.length <= 0 ? (
           <EmptyCard />
         ) : (
           task.map(task => {
