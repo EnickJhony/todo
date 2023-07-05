@@ -26,11 +26,12 @@
   color: var(--blue-dark);
 }
 
-
 .trash {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--gray-500);
+  border: none;
   color: var(--gray-300);
   width: 24px;
   height: 24px;
@@ -42,4 +43,29 @@
   width: 24px;
   height: 24px;
   border-radius: 4px;
+}
+
+.inputCircle {
+  appearance: none;
+  margin-top: 0.1rem;
+
+  border: 0.15rem solid var(--blue);
+  padding: 0.45rem;
+  border-radius: 50%;
+}
+
+.inputCircle:hover {
+  border: 0.15rem solid var(--blue-dark);
+  background:  rgba(31, 66, 87, 0.5);
+  border-radius: 50%;
+}
+
+.inputCircle:checked {
+  border: 0.15rem solid var(--purple-dark);
+  background: var(--purple-dark);
+}
+
+.inputCircle:hover:checked {
+  border: 0.15rem solid var(--purple);
+  background: var(--purple);
 }
