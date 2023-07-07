@@ -4,11 +4,10 @@ import { Card } from './components/Card'
 import { EmptyCard } from './components/EmptyCard'
 import LogoTodo from './assets/logo.svg'
 import { PlusCircle } from 'phosphor-react'
-
 import styles from './App.module.css'
 import './global.css'
 
-export interface Task {
+interface Task {
   id: string
   content: string
   isCompleted: boolean
@@ -34,8 +33,14 @@ export default function App() {
     setNewTaskText('')
   }
 
+  //Estou pegando o texto da minha textArea e mandando para a "setNerTaskText" que vai ser usada na criação da minha Task principal
   function newTaskTextChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setNewTaskText(event.target.value)
+  }
+
+  function deleteTask(id: string) {
+    const newTaskList = task.filter(task => task.id !== id)
+    setTask(newTaskList)
   }
 
   return (
@@ -75,6 +80,7 @@ export default function App() {
                 id={task.id}
                 content={task.content}
                 isCompleted={task.isCompleted}
+                onDeleteTask={deleteTask}
               />
             )
           })
