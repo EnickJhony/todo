@@ -73,6 +73,7 @@ export default function App() {
             placeholder="Adicione uma nova tarefa"
             value={newTaskText}
             onChange={newTaskTextChange}
+            required
           />
           <button type="submit">
             Criar
