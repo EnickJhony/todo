@@ -18,6 +18,8 @@ export default function App() {
 
   const [newTaskText, setNewTaskText] = useState('')
 
+  const [completedCount, setCompletedCount] = useState(0)
+
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
 
@@ -33,7 +35,6 @@ export default function App() {
     setNewTaskText('')
   }
 
-  //Estou pegando o texto da minha textArea e mandando para a "setNerTaskText" que vai ser usada na criação da minha Task principal
   function newTaskTextChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setNewTaskText(event.target.value)
   }
@@ -41,6 +42,18 @@ export default function App() {
   function deleteTask(id: string) {
     const newTaskList = task.filter(task => task.id !== id)
     setTask(newTaskList)
+  }
+
+  function toggleTaskCompleted(id: string) {
+    const tasksWithUpdatedCompletedStatus = task.map(task => {
+      if (task.id === id) {
+        const updatedTask = { ...task }
+        updatedTask.isCompleted = !task.isCompleted
+        return updatedTask
+      }
+      return task
+    })
+    setTask(tasksWithUpdatedCompletedStatus)
   }
 
   return (
@@ -66,7 +79,10 @@ export default function App() {
             <p>Tarefas criadas</p> <span>{task.length}</span>
           </div>
           <div className={styles.taskDone}>
-            <p>Concluídas</p> <span>10 de {task.length}</span>
+            <p>Concluídas</p>{' '}
+            <span>
+              {completedCount} de {task.length}
+            </span>
           </div>
         </div>
 
@@ -81,6 +97,7 @@ export default function App() {
                 content={task.content}
                 isCompleted={task.isCompleted}
                 onDeleteTask={deleteTask}
+                onCheckbox={toggleTaskCompleted}
               />
             )
           })
