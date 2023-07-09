@@ -38,26 +38,15 @@
 }
 
 .checkbox {
-  appearance: none;
-  margin-top: 0.1rem;
-
-  border: 0.15rem solid var(--blue);
-  padding: 0.45rem;
-  border-radius: 50%;
+  color: var(--blue);
+  border: none;
+  background-color: var(--gray-500);
 }
 
-.checkbox:hover {
-  border: 0.15rem solid var(--blue-dark);
-  background:  rgba(31, 66, 87, 0.5);
-  border-radius: 50%;
+.circleHovered {
+  color: var(--purple-dark);
 }
 
-.checkbox:checked {
-  border: 0.15rem solid var(--purple-dark);
-  background: var(--purple-dark);
-}
-
-.checkbox:hover:checked {
-  border: 0.15rem solid var(--purple);
-  background: var(--purple);
+.circleHovered:hover {
+  color: var(--purple);
 }
