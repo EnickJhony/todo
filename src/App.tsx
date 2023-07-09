@@ -18,8 +18,6 @@ export default function App() {
 
   const [newTaskText, setNewTaskText] = useState('')
 
-  const [completedCount, setCompletedCount] = useState(0)
-
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
 
@@ -56,6 +54,13 @@ export default function App() {
     setTask(tasksWithUpdatedCompletedStatus)
   }
 
+  let count = 0
+  task.forEach(task => {
+    if (task.isCompleted === true) {
+      count++
+    }
+  })
+
   return (
     <main>
       <header className={styles.header}>
@@ -81,7 +86,7 @@ export default function App() {
           <div className={styles.taskDone}>
             <p>Concluídas</p>{' '}
             <span>
-              {completedCount} de {task.length}
+              {count} de {task.length}
             </span>
           </div>
         </div>
