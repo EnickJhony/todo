@@ -54,10 +54,10 @@ export default function App() {
     setTask(tasksWithUpdatedCompletedStatus)
   }
 
-  let count = 0
+  let countOfCompletedTasks = 0
   task.forEach(task => {
     if (task.isCompleted === true) {
-      count++
+      countOfCompletedTasks++
     }
   })
 
@@ -87,7 +87,7 @@ export default function App() {
           <div className={styles.taskDone}>
             <p>Concluídas</p>{' '}
             <span>
-              {count} de {task.length}
+              {countOfCompletedTasks} de {task.length}
             </span>
           </div>
         </div>
