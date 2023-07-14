@@ -21,7 +21,7 @@
   margin-top: calc(0px - 1.5rem);
 }
 
-.newTask textarea {
+.newTask input {
   background: var(--gray-500);
   color: var(--gray-100);
   width: 638px;

@@ -68,7 +68,8 @@ export default function App() {
       </header>
       <div className={styles.wrapper}>
         <form onSubmit={handleCreateNewTask} className={styles.newTask}>
-          <textarea
+          <input
+            type="text"
             name="task"
             placeholder="Adicione uma nova tarefa"
             value={newTaskText}
