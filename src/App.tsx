@@ -33,7 +33,7 @@ export default function App() {
     setNewTaskText('')
   }
 
-  function newTaskTextChange(event: ChangeEvent<HTMLTextAreaElement>) {
+  function newTaskTextChange(event: ChangeEvent<HTMLInputElement>) {
     setNewTaskText(event.target.value)
   }
 
