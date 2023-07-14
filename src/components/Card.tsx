@@ -49,8 +49,13 @@ export function Card({
           <Circle size={20} weight={isHovered ? 'duotone' : 'regular'} />
         )}
       </button>
-      {/* <input className={styles.checkbox} type="checkbox" /> */}
-      <p>{content}</p>
+
+      {isCompleted ? (
+        <p className={styles.notCompletedText}>{content}</p>
+        ): (
+        <p className={styles.completedText}>{content}</p>
+      )}
+
       <button
         title="Deletar Task!"
         className={styles.trash}
